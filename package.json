@@ -1,0 +1,29 @@
+{
+  "name": "psgc-extractor",
+  "version": "1.0.0",
+  "description": "NodeJS extractor for PSGC JSON data",
+  "main": "index.js",
+  "dependencies": {
+    "lodash": "^4.17.5"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "philippines",
+    "PSGC",
+    "philippine",
+    "standard",
+    "geographic",
+    "code",
+    "PSA",
+    "philippine",
+    "statistics",
+    "authority"
+  ],
+  "author": "Argieson Bacani",
+  "license": "MIT"
+}
