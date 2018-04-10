@@ -17,7 +17,6 @@ function extract(what) {
             let newExtract = [];
             extract.forEach(element => {
                 let bgyCode = element.Code;
-                console.log(bgyCode);
                 if(bgyCode != undefined || bgyCode != null) {
                     let codeSearch = String(bgyCode).substr(0, 6);
 
@@ -30,8 +29,7 @@ function extract(what) {
                         citymun: _.startCase(_.toLower(citymun.Name))
                     });
                 }
-                let used = process.memoryUsage().heapUsed / 1024 / 1024;
-                console.log('Used', Math.round(used*100)/100);
+                
             });
 
             extract = newExtract;
@@ -48,11 +46,22 @@ function extract(what) {
         data = extract;
     }
 
-    // console.log('Extracted', data);
+    data = data.map(
+        el => {
+            return (
+                {
+                    code: el.Code,
+                    name: _.startCase(_.toLower(el.Name)),
+                    type: el['Inter-Level']
+                }
+            );
+        }
+    )
+
     data = JSON.stringify(data);
 
     fs.writeFile(what + '.json', data, (error) => {
-        console.log(error)
+        console.log('Error encountered?', error)
     });
 
     return 1;
@@ -61,8 +70,6 @@ function extract(what) {
 function run() {
     let args = process.argv;
 
-    // console.log(args.includes('reg'))
-    // console.log(args)
     if(args.includes('reg')) extract('Reg');
     if(args.includes('prov')) extract('Prov');
     if(args.includes('mun')) extract('citymun');
