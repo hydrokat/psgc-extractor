@@ -10,6 +10,10 @@ function extract(what) {
         let extract = psgc.filter( el => el['Inter-Level'] == 'City' || el['Inter-Level'] == 'Mun' || el['Inter-Level'] == 'SubMun');
 
         data = extract;
+    } else if (what == 'prov') {
+        let extract = psgc.filter( el => el['Inter-Level'] == 'Dist' || el['Inter-Level'] == 'Prov');
+
+        data = extract;
     } else {
         let extract = psgc.filter( el => el['Inter-Level'] == what );
 
